@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -5 -masm=intel $CFILE > main.js
+gcc -S -masm=intel $CFILE > main.js
