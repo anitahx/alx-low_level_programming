@@ -3,10 +3,10 @@
 /**
  *
  *  * main - Entry point
+ * Description: prints it exactly as is
+ * Return: Always 0 (Success)
  *
- *   * Return: Always 0 (Success)
- *
- *    */
+ */
 
 int main(void)
 
