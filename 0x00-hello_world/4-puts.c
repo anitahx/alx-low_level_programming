@@ -1,11 +1,11 @@
 #include <stdio.h>
 /**
-*main - print the strings that inputs the function
-*Description: prints "Programming is like building a multilingual puzzle"
-*Return: 0
+*main - prints a string that in pups the functions
+*Description: Printing "Programming is like building a multilingual puzzle"
+*Return: Always 0 (Success)
 */
 int main(void)
 {
-puts("\"programming is like building a multiligual puzzle");
+puts("\"Programming is like building a multilingual puzzle");
 return (0);
 }
