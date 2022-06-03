@@ -16,11 +16,10 @@ for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
 {
 putchar(alphabet);
 }
-for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
+for (alphabet = 'a'; alphabet <= 'z'; alphabet++, '\n')
 {
 putchar(alphabet);
 }
-putchar('\n');
 return (0);
 }
 
