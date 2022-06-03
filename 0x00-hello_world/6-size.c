@@ -1,11 +1,13 @@
 #include <stdio.h>
 /**
-*main - entry
+*main - Entry point
 *Descripton: "prints the size of various files"
-*Return: 0
+*Return: Always 0 (Success)
 */
 int main(void)
+
 {
+
 int v;
 long int w;
 long long int x;
