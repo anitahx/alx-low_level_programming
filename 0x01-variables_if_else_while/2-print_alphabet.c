@@ -16,9 +16,9 @@ for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
 {
 putchar(alphabet);
 }
-for (alphabet = 'a'; alphabet <= 'z'; alphabet++, '\n')
+for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
 {
-putchar(alphabet);
+putchar('\n');
 }
 return (0);
 }
