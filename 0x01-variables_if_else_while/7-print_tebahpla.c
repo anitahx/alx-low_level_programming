@@ -1,9 +1,10 @@
 #include <stdio.h>
 /**
- * main - print out the result of the function
- * Description: print out the alphabets in reverse
- * Retun: return integer value o
- */
+ * main -Entry point
+ *
+ * Return: 0
+ *
+*/
 int main(void)
 {
 char alphabet;
