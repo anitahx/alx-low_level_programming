@@ -5,9 +5,12 @@
  */
 int main(void)
 {
-int num;
+int start = 0;
 
-for (num = 0; num < 10; num++);
+for (start = 0; start < 10; start++)
+{
+putchar(start + '0');
+}
 putchar('\n');
 return (0);
 }
