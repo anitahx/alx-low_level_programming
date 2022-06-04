@@ -1,20 +1,24 @@
 #include <stdio.h>
+#include <stdlib.h>
 /**
- * main: Entry point
- * Description: print the required results
- * Return: return the integer value 0
+ * main - Entry point
+ * Description: prints all single digit numbers of base 10
+ *
+ * starting from 0, followed by a new line
+ * Return: 0
  */
 int main(void)
 {
-int num;
-for (num = 0; num < 10; num++)
+int c = 0;
+while (c < 10)
 {
-putchar(num + '0');
-if (num < 9)
+putchar(48 + c);
+if (c != 9)
 {
 putchar(',');
 putchar(' ');
 }
+c++;
 }
 putchar('\n');
 return (0);
