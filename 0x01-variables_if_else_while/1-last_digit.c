@@ -5,7 +5,7 @@
 /* betty style doc for function main goes there */
 /**
 * main - use to check for conditions
-*Return: return integer o
+*Return: return integer 0
 */
 int main(void)
 {
