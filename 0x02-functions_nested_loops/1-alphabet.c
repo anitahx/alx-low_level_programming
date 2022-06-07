@@ -1,9 +1,23 @@
-#include <stdio.h>                                    
+#include "main.h"
 
-/**                                                   
- *
- * main - Entry point 
- * Return: 0
- */                                                                              
+/**
+ * print_alphabet - prints lower case alphabet
+ * Description: prints lowercase alphabet
+ * Return: void
+ */
 
-int main(void)
+void print_alphabet(void)
+{
+
+	char n;
+
+	n = 'a';
+	char termx = 'z';
+
+	while (n <= termx)
+	{
+		_putchar(n);
+		n++;
+	}
+	_putchar('\n');
+}
