@@ -1,8 +1,13 @@
-#include <stdio.h>
-/**
- * main - Entry point
- * Return: 0
- */
+#include "main.h"
 
-int main(void)
+/**
+ * _isalpha - checks for alphabetic character
+ * @c: the character to be checked
+ * Return: 1 if c is a letter, 0 if otherwise
+ */
+int _isalpha(int c)
+
+{
+return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
 
