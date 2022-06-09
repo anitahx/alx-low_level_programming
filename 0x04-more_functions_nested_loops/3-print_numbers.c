@@ -6,7 +6,7 @@
  * Return: void
  */
 
-void print_numbers(void);
+void print_numbers(void)
 {
 
 	char j;
@@ -14,7 +14,7 @@ void print_numbers(void);
 	j = '0';
 	while (j <= '9')
 	{
-		_putchar(j);
+		_putchar(j + '0');
 		j++;
 	}
 	_putchar('\n');
