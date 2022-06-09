@@ -1,25 +1,23 @@
 #include "main.h"
+
 /**
- * print_line - print the shortest distance between two points
- * @n: argument for the function
- *
- * Description: print out the required result
- *
- * Return: return void
+ * print_line - draws a straight line in the terminal
+ * @n: number of times the character _ should be printed
  */
 void print_line(int n)
 {
-	int i;
-
-	for (i = 0; i < n; i++)
+	if (n <= 0)
 	{
-		if (n > 0)
+		_putchar('\n');
+	} else
+	{
+		int i;
+
+		for (i = 1; i <= n; i++)
 		{
 			_putchar('_');
-		} else if (n <= 0)
-		{
-			_putchar('\n');
 		}
+		_putchar('\n');
 	}
-	_putchar('\n');
+
 }

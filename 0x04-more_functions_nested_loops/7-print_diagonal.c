@@ -1,24 +1,28 @@
 #include "main.h"
-/**
- * print_diagonal - print out diagonal shape
- * @n: argument for the function
- *
- * Description: print out the required result
- *
- * Return: return void
- *
- */
-void main(void)
-{
-	int i;
-	int j;
 
-	for (i = 0; i <= 5; i++)
+/**
+ * print_diagonal - draws a diagonal line on the terminal
+ * @n: number of times the character \ should be printed
+ */
+void print_diagonal(int n)
+{
+	if (n <= 0)
 	{
-		for (j = 0; j <= 5; j++)
-		{
-			_putchar(j + '0');
-		}
 		_putchar('\n');
+	} else
+	{
+		int i, j;
+
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < n; j++)
+			{
+				if (j == i)
+					_putchar('\\');
+				else if (j < i)
+					_putchar(' ');
+			}
+			_putchar('\n');
+		}
 	}
 }
