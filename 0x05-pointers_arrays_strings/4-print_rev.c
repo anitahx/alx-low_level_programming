@@ -1,18 +1,19 @@
 #include "main.h"
-
 /**
- * _puts - prints a string, in reverse
- * @str: value to be evaluate.
- * Return: null.
+ * print_rev - prints a string in reverse
+ * @s: value taken from main
+ * Return: (0)
  */
-void _puts(char *str)
+void print_rev(char *s)
 {
-	int l = 0;
+	int live;
 
-	while (*(str + l) != '\0')
+	for (live = 0; s[live] != '\0'; live++)
 	{
-		_putchar(str[l]);
-		l++;
+	}
+	for (live = live - 1; live >= 0; live--)
+	{
+		_putchar(s[live]);
 	}
 	_putchar('\n');
 }
