@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- *_puts - prints a string in reverse
- *@str: value to be evaluate.
- *Return: null.
+ * _puts - prints a string, in reverse
+ * @str: value to be evaluate.
+ * Return: null.
  */
 void _puts(char *str)
 {
