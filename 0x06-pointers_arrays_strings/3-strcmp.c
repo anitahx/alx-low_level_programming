@@ -8,21 +8,15 @@
  * Return: s1[a] - s2 [a]
  */
 int _strcmp(char *s1, char *s2)
-
 {
 
-	int a;
-
-	a = 0;
-	while (s1[a] != '\0' && s2[a] != '\0')
+	int _strcmp(char *s1, char *s2)
 {
-	if (s1[a] != s2[a])
+	while (*s1 && *s2 && *s1 == *s2)
 	{
-		return (s1[a] != s2[a]);
+		s1++;
+		s2++;
 	}
-	a++;
 
-}
-
-	return (0);
+	return (*s1 - *s2);
 }
