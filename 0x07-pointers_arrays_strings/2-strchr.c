@@ -4,7 +4,7 @@
  * *_strchr - locates character in string
  * @s: char array string
  * @c: the character to look for
- * Return: NULL if char not found or pointer to first occurance of char c 
+ * Return: NULL if char not found or pointer to first occurance of char c
  */
 
 char *_strchr(char *s, char c)
@@ -15,7 +15,7 @@ char *_strchr(char *s, char c)
 		if (*s == c)
 			return (s);
 		else if (*(s + 1) == c)
-			return (s+1);
+			return (s + 1);
 		s++;
 	}
 
