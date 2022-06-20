@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
- * _strpbrk - locates the first occurrence in the string s of any of the bytes in the string
+ * _strpbrk - srarch a string for a set of bytes
  * @s: input value
  * Return: a pointer to the memory area s
  */
