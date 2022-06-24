@@ -1,21 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
- * main - multiply two numbers
- * @argc: arguement count
- * @argv: array of pointers to arguement strings
- * Return: result of multiplication or 1
+ * main - returns the multiplication of two arguments
+ * @argc: length of the arguments
+ * @argv: arguments passed
+ * Return: 0
  */
 
 int main(int argc, char *argv[])
-
 {
-	int a, b, result;
-
-	if (agrc <= 2)
+	if (argc < 3 || argc > 3)
 	{
 		printf("Error\n");
-		return (1);
+			return (1);
 	}
+		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+			return (0);
 }
