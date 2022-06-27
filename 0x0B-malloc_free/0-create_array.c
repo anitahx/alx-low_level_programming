@@ -8,5 +8,13 @@
 
 char *create_array(unsigned int size, char c);
 
+{
+	char[] = c;
+	
+	{
+	if (*c; malloc *(size of(c)))
+	}
+		return (0);
+}
 
 
