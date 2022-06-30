@@ -13,33 +13,30 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 {
 	char *strDup;
-	int a;
-	unsigned int b;
+	int i;
+	unsigned int j;
 
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
-	a = 0;
-	while (s1[a] != '\0')
-		a++;
-	strDup = malloc(sizeof(char) * (a + n));
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	strDup = malloc(sizeof(char) * (i + n + 1));
 	if (strDup == NULL)
 		return (NULL);
-
-	a = b = 0;
-	while (s1[a] != '\0')
+	i = j = 0;
+	while (s1[i] != '\0')
 	{
-	strDup[a] = s1[a];
-	a++;
+		strDup[i] = s1[i];
+		i++;
 	}
-	while (b < n && s2[b] != '\0')
+	while (j < n && s2[j] != '\0')
 	{
-		strDup[a] = s2[b];
-		a++, b++;
+		strDup[i] = s2[j];
+		i++, j++;
 	}
-	strDup[a] = '\0';
+	strDup[i] = '\0';
 	return (strDup);
 }
-
-
