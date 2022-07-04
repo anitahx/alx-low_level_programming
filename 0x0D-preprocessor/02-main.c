@@ -9,7 +9,7 @@
 int main(void)
 
 {
-	charx[] = "file_name";
+	char x[] = "file_name";
 	int i;
 
 	for (i = 0; i < 10; i++)
