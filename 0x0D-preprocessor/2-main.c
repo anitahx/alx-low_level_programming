@@ -9,13 +9,8 @@
 int main(void)
 
 {
-	char x[] = "file_name";
-	int i;
-
-	for (i = 0; i < 10; i++)
 	{
-		putchar(x[i]);
+		printf("%s\n", __BASE_FILE__);
 	}
-	putchar('\n');
 	return (0);
 }
