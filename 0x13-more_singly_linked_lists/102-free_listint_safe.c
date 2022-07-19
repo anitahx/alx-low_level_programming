@@ -1,40 +1,39 @@
 #include "lists.h"
 
 /**
- * free_listint_safe - frees a linked list
- * @h: pointer to the first node in the linked list
+ * delete_nodeint_at_index - Deletes the node at a given
+ * index of a list
+ * @head: A pointer to the address of the
+ *        head of the list.
+ * @index: The index of the node to be deleted.
  *
- * Return: number of elements in the freed list
+ * Return: On success - 1.
+ *         On failure - -1.
  */
-size_t free_listint_safe(listint_t **h)
+int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	size_t len = 0;
-	int diff;
-	listint_t *temp;
-
-	if (!h || !*h)
-		return (0);
-
-	while (*h)
-	{
-		diff = *h - (*h)->next;
-		if (diff > 0)
-		{
-			temp = (*h)->next;
-			free(*h);
-			*h = temp;
-			len++;
-		}
-		else
-		{
-			free(*h);
-			*h = NULL;
-			len++;
-			break;
-		}
-	}
-
-	*h = NULL;
-
-	return (len);
+listint_t *newNode, *tmp = *head;
+unsigned int node;
+if (tmp == NULL)
+{
+return (-1);
+}
+if (index == 0)
+{
+*head = (*head)->next;
+free(tmp);
+return (1);
+}
+for (node = 0; node < (index - 1); node++)
+{
+if (tmp->next == NULL)
+{
+return (-1);
+}
+tmp = tmp->next;
+}
+newNode = tmp->next;
+tmp->next = newNode->next;
+free(newNode);
+return (1);
 }
