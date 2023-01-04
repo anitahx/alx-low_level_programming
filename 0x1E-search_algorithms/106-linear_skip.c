@@ -1,84 +1,97 @@
 #include "search_algos.h"
 
-listint_t *recurse_helper(listint_t *curr, size_t size, size_t step, int val);
-listint_t *subrecurse_help(listint_t *curr, size_t step, int val);
-listint_t *look_ahead(listint_t *probe, size_t step);
+skiplist_t *recurse_normal(skiplist_t *probe, skiplist_t *stop, int value);
+skiplist_t *recurse_express(skiplist_t *probe, int value);
+skiplist_t *find_list_end(skiplist_t *probe);
 
 /**
- * jump_list - jump search for linked list
+ * linear_skip - perform search with skip list
  * @list: list to search
- * @size: size of list
  * @value: search value
  *
- * Return: index of matched value; NULL if not found
+ * Return: matching node; NULL if not found
  */
-listint_t *jump_list(listint_t *list, size_t size, int value)
+skiplist_t *linear_skip(skiplist_t *list, int value)
 {
+	skiplist_t *zone = NULL;
+
 	if (list == NULL)
 		return (NULL);
 
-	return (recurse_helper(list, size, sqrt(size), value));
-}
-/**
- * recurse_helper - recursive implement of jump search
- * @curr: current node of list
- * @size: size of list
- * @step: jump increment
- * @val: search value
- *
- * Return: index where value is located; -1 if value not found
- */
-listint_t *recurse_helper(listint_t *curr, size_t size, size_t step, int val)
-{
-	listint_t *next_step = NULL; /* pointer to next step */
+	zone = recurse_express(list, value);
 
-	/* printf("Value checked at index [%lu] = [%d]\n", curr->index, curr->n); */
-
-	/* if value is greater than next_step, jump forward */
-	next_step = look_ahead(curr, step);
-	printf("Value checked at index [%lu] = [%d]\n",
-next_step->index, next_step->n);
-	if (curr->index + step < size && (next_step->n < val))
-		return (recurse_helper(next_step, size, step, val));
-
-	/* recurse subarray */
-	printf("Value found between indexes [%lu] and [%lu]\n",
-curr->index, (next_step->index));
-
-	return (subrecurse_help(curr, step, val));
-}
-
-/**
- * look_ahead - check value at next step
- * @probe: pointer sent out to check next step in list
- * @step: jump interval
- *
- * Return: value at next jump interval
- */
-listint_t *look_ahead(listint_t *probe, size_t step)
-{
-	if (step <= 0 || probe->next == 0)
-		return (probe); /* return value at next step */
-	return (look_ahead(probe->next, step - 1));
-}
-
-/**
- * subrecurse_help - recursive implement for recursive implement
- * @curr: current node to check
- * @step: interval of jumps
- * @val: search value
- *
- * Return: index where value is located; -1 if value not found
- */
-listint_t *subrecurse_help(listint_t *curr, size_t step, int val)
-{
-	if (curr == NULL || step <= 0 || curr->n > val)
-		return (NULL);
-
-	printf("Value checked at index [%lu] = [%d]\n", curr->index, curr->n);
-
-	if (curr->n == val)
-		return (curr);
+	if (zone->n == value)
+		return (zone);
 	else
-		return (subrecurse_help(curr->next, step - 1, val));
+		return (recurse_normal(zone, zone->express, value));
+}
+/**
+ * recurse_express - search express list
+ * @probe: search pointer
+ * @value: search value
+ *
+ * Return: pointer to match or match range; NULL if not in range
+ */
+skiplist_t *recurse_express(skiplist_t *probe, int value)
+{
+	skiplist_t *last = NULL;
+
+	if (probe->express == NULL)
+	{
+		last = find_list_end(probe);
+		printf("Value found between indexes [%lu] and [%lu]\n",
+probe->index, last->index);
+		return (probe);
+	}
+
+	printf("Value checked at index [%lu] = [%d]\n",
+probe->express->index, probe->express->n);
+
+	if (probe->express->n >= value)
+	{
+		printf("Value found between indexes [%lu] and [%lu]\n",
+probe->index, probe->express->index);
+		return (probe);
+	}
+	else
+		return (recurse_express(probe->express, value));
+}
+/**
+ * recurse_normal - search normal list
+ * @probe: search pointer
+ * @stop: endpoint of subsearch; either express node or NULL
+ * @value: search value
+ *
+ * Return: pointer to match; NULL if not found
+ */
+skiplist_t *recurse_normal(skiplist_t *probe, skiplist_t *stop, int value)
+{
+	if (probe == stop)
+	{
+		if (stop != NULL && stop->n == value)
+			return (stop);
+		else
+			return (NULL);
+	}
+
+	printf("Value checked at index [%lu] = [%d]\n",
+probe->index, probe->n);
+
+	if (probe->n == value)
+		return (probe);
+	else
+		return (recurse_normal(probe->next, stop, value));
+}
+/**
+ * find_list_end - find last node
+ * @probe: search pointer
+ *
+ * Return: pointer to final node
+ */
+skiplist_t *find_list_end(skiplist_t *probe)
+{
+	if (probe->next == NULL)
+		return (probe);
+	else
+		return (find_list_end(probe->next));
 }
