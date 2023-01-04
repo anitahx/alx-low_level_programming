@@ -1,61 +1,58 @@
 #include "search_algos.h"
+
+int recurse_helper(int *array, size_t left, size_t right, int value);
+
 /**
-* prar - prints array
-* @array: array
-* @start: start point
-* @end: ending point
-* Return: nothing
-**/
-void prar(int *array, size_t start, size_t end)
+ * binary_search - search for value in array of sorted ints
+ * @array: array to search
+ * @size: size of array
+ * @value: value to search
+ *
+ * Return: index of found value; or -1 if not found
+ */
+int binary_search(int *array, size_t size, int value)
 {
+	if (array == NULL)
+		return (-1);
 
-	unsigned int i;
-
-	printf("Searching in array: ");
-	for (i = start; i < end; i++)
-	{
-		printf("%d, ", array[i]);
-	}
-	printf("%d\n", array[end]);
+	return (recurse_helper(array, 0, size - 1, value));
 }
 
 /**
-* binary_search - a function that searches for a value in a
-*sorted array of integers using the Binary search algorithm
-* @array: pointer to the first element of the array
-* @size: is the number of elements in array
-* @value: value to search for
-* Return: index OR -1
-**/
-int binary_search(int *array, size_t size, int value)
+ * recurse_helper - recursive implement of binary search
+ * @array: array to search
+ * @left: leftmost index
+ * @right: rightmost index
+ * @value: value to search
+ *
+ * Return: index of found value; or -1 if not found
+ */
+int recurse_helper(int *array, size_t left, size_t right, int value)
 {
-	unsigned int left = 0, right;
-	int middle;
+	size_t i = left, mid;
 
-	right = size - 1;
-
-	if (array == NULL)
+	if (left > right)
 		return (-1);
-	if (size == 1)
+
+	/* print search progress */
+	printf("Searching in array: %d", array[i++]);
+	while (i <= right)
+		printf(", %d", array[i++]);
+	printf("\n");
+
+	/* calculate mid */
+	mid = left + ((right - left) / 2);
+
+	/* check if mid is value */
+	if (array[mid] == value)
+		return (mid);
+	else if (array[mid] > value)
 	{
-		return (array[left]);
-	}
-	while (right >= left)
-	{
-		if (left == 0 && right == 0)
+		if (mid != 0)
+			return (recurse_helper(array, left, mid - 1, value));
+		else
 			return (-1);
-		prar(array, left, right);
-		middle = (right + left) / 2;
-		if (array[middle] == value)
-			return (array[middle]);
-		else if (array[middle] < value)
-		{
-			left = middle + 1;
-		}
-		else if (array[middle] > value)
-		{
-			right = middle;
-		}
 	}
-	return (-1);
+	else
+		return (recurse_helper(array, mid + 1, right, value));
 }
